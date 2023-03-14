@@ -10,8 +10,8 @@ import json
 import os
 
 # get node name this script runs on
-hostname = os.getenv('NODE_NAME', None)   # from kubernetes env
-if not hostname:
+hostname = os.getenv('NODE_NAME', None)   # first try from kubernetes environment
+if hostname is None:
     hostname = os.uname().nodename
 
 config_file = 'config.secrets.json'
